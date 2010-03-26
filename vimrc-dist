@@ -1,0 +1,77 @@
+syntax on
+
+set hlsearch
+set tabstop=4
+set showcmd
+set incsearch
+
+au BufNewFile,BufRead *.clj set ft=clojure
+
+autocmd FileType php let php_sql_query=1
+autocmd FileType php let php_htmlInStrings=1
+autocmd FileType php let php_noShortTags=1
+autocmd FileType php let php_folding=1
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+filetype plugin on
+filetype plugin indent on
+
+set encoding=utf-8
+
+set nu                  " enumera as linhas
+set ruler               " mostra a posicao do cursor
+set title               " mostra o nome do arquivo na barra de titulo
+set t_vb=               " desabilita o alerta sonoro (chato)
+set termencoding=utf8   " define todos os arquivos ocmo UTF-8
+set nobackup            " nao grava os arquivos ~* de backup
+set fdm=marker          " habilita o folding
+
+set bs=2                " mexe com o backspace mas nao lembro o que faz
+set sm                  " colore chaves/parenteses casados
+set ai cindent sw=4     " configura a identacao
+set is ic               " configura a busca
+set et st=4 ts=4        " configura o TAB
+retab                   " substitui os TAB's por espacos
+syntax on               " habilita a colocaracao de sintaxe
+map <C-B> :!php -l %<CR>
+imap <Nul> <C-X><C-O>
+imap <C-Nul> <C-X><C-O>
+noremap L f$ 
+noremap H F$
+
+set backspace=indent,eol,start 
+
+let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
+let g:clj_paren_rainbow=1           " Rainbow parentheses'!
+
+imap ( ()<esc>i " autocompleta parenteses, chaves, colchetes, aspas
+inoremap ( ()<esc>i
+inoremap { {}<esc>i
+inoremap [ []<esc>i
+inoremap " ""<esc>i
+inoremap ' ''<esc>i
+
+" abas
+map <C-T> :tabe .<CR>
+map <C-W> :tabc<CR>
+map <C-N> :tabn<CR>
+map <C-P> :tabp<CR>
+map <C-left> :tabp<CR>
+map <C-right> :tabn<CR>
+
+map gf :tabn <cfile><CR>
+
+" atalho para embaralhar letras quando alguem estiver olhando
+map <F8> ggVGg?
+
+" atalho para retirar ^M do final das linhas
+map <F2> :%s///g<CR>
+
+" aliases uteis para fechar o vim
+cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
+
