@@ -1,11 +1,13 @@
 syntax on
 
 set hlsearch
-set tabstop=4
+set tabstop=2
 set showcmd
 set incsearch
 
 au BufNewFile,BufRead *.clj set ft=clojure
+au BufNewFile,BufRead *.module set ft=php
+au BufNewFile,BufRead *.install set ft=php
 
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
@@ -58,13 +60,15 @@ inoremap ' ''<esc>i
 
 " abas
 map <C-T> :tabe .<CR>
-map <C-W> :tabc<CR>
-map <C-N> :tabn<CR>
-map <C-P> :tabp<CR>
 map <C-left> :tabp<CR>
 map <C-right> :tabn<CR>
 
 map gf :tabn <cfile><CR>
+
+" Janelas
+map <C-N> :vnew .<CR><C-W>R
+map <A-left> <C-w>h
+map <A-right> <C-w>l
 
 " atalho para embaralhar letras quando alguem estiver olhando
 map <F8> ggVGg?
