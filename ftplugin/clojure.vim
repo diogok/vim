@@ -7,6 +7,8 @@ if exists("b:did_ftplugin")
 	finish
 endif
 
+map <C-F6> :!lein test<CR>
+
 let b:did_ftplugin = 1
 
 let s:cpo_save = &cpo

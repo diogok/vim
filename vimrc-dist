@@ -66,9 +66,11 @@ map <C-right> :tabn<CR>
 map gf :tabn <cfile><CR>
 
 " Janelas
-map <C-N> :vnew .<CR><C-W>R
+map <C-W><C-V> :vnew .<CR><C-W>R
 map <A-left> <C-w>h
 map <A-right> <C-w>l
+map <A-down> <C-w>j
+map <A-up> <C-w>k
 
 " atalho para embaralhar letras quando alguem estiver olhando
 map <F8> ggVGg?
