@@ -81,3 +81,4 @@ map <F2> :%s///g<CR>
 " aliases uteis para fechar o vim
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
 
+" end
