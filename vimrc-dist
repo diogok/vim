@@ -1,8 +1,10 @@
 syntax on
 
-set hlsearch
 set tabstop=2
+set expandtab
 set showcmd
+set showmode
+set ttyfast
 set incsearch
 
 au BufNewFile,BufRead *.clj set ft=clojure
@@ -51,6 +53,10 @@ set backspace=indent,eol,start
 let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
 let g:clj_paren_rainbow=1           " Rainbow parentheses'!
 
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
 imap ( ()<esc>i " autocompleta parenteses, chaves, colchetes, aspas
 inoremap ( ()<esc>i
 inoremap { {}<esc>i
@@ -62,6 +68,8 @@ inoremap ' ''<esc>i
 map <C-T> :tabe .<CR>
 map <C-left> :tabp<CR>
 map <C-right> :tabn<CR>
+map <C-h> :tabp<CR>
+map <C-l> :tabn<CR>
 
 map gf :tabn <cfile><CR>
 
@@ -81,4 +89,4 @@ map <F2> :%s///g<CR>
 " aliases uteis para fechar o vim
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
 
-" end
+au FocusLost * :wa
