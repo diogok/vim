@@ -8,6 +8,8 @@ set ttyfast
 set incsearch
 
 au BufNewFile,BufRead *.clj set ft=clojure
+au BufNewFile,BufRead *.scss set ft=css
+au BufNewFile,BufRead *.sass set ft=css
 au BufNewFile,BufRead *.module set ft=php
 au BufNewFile,BufRead *.install set ft=php
 
