@@ -1,7 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='src'
-let g:netrw_dirhist_2='/home/diogo/workspace/itsm/modules/web-jruby/public'
-let g:netrw_dirhist_3='/home/diogo/workspace/itsm/poms'
-let g:netrw_dirhist_4='/home/diogo/workspace/itsm/modules/web-jruby/public/widgets/form'
-let g:netrw_dirhist_5='/home/diogo/workspace/itsm/modules/domain/src/main/clj/intelie'
+let g:netrw_dirhist_cnt =0
