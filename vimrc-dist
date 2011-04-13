@@ -59,6 +59,8 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+map <F2> :!couchapp push<CR>
+
 imap ( ()<esc>i " autocompleta parenteses, chaves, colchetes, aspas
 inoremap ( ()<esc>i
 inoremap { {}<esc>i
@@ -86,7 +88,7 @@ map <A-up> <C-w>k
 map <F8> ggVGg?
 
 " atalho para retirar ^M do final das linhas
-map <F2> :%s///g<CR>
+map <> :%s///g<CR>
 
 " aliases uteis para fechar o vim
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq

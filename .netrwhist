@@ -1,8 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/diogo/workspace/itsm/tools/itsm'
-let g:netrw_dirhist_2='/home/diogo/workspace/itsm'
-let g:netrw_dirhist_3='/home/diogo/workspace/itsm/tools'
-let g:netrw_dirhist_4='/home/diogo/workspace/itsm/modules/domain/src/main/clj/intelie/framework'
-let g:netrw_dirhist_5='/home/diogo/workspace/itsm/modules/domain'
-let g:netrw_dirhist_6='/home/diogo/workspace/itsm/modules/web-jruby/public'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/diogo/workspace/diogo/trends/couch/photos'
+let g:netrw_dirhist_2='/home/diogo/workspace/diogo/bottle/extension/chrome'
+let g:netrw_dirhist_3='/home/diogo/workspace/diogo/grude'
