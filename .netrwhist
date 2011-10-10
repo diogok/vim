@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/diogo/workspace/diogo/trends/couch/photos'
-let g:netrw_dirhist_2='/home/diogo/workspace/diogo/bottle/extension/chrome'
-let g:netrw_dirhist_3='/home/diogo/workspace/diogo/grude'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/diogo/workspace/diogo/cncflora-new/taxons/views/familias'
+let g:netrw_dirhist_2='/home/diogo/workspace/diogo/cncflora-new/taxons/views/especies'
+let g:netrw_dirhist_3='/home/diogo/workspace/diogo/todo/site'
+let g:netrw_dirhist_4='js'
+let g:netrw_dirhist_5='/home/diogo/workspace/cncflora/fichas/css'
+let g:netrw_dirhist_6='/home/diogo/workspace/diogo/sandbox/naive-db'
+let g:netrw_dirhist_7='/home/diogo/workspace/diogo/lecafe/stuff'
+let g:netrw_dirhist_8='/home/diogo/workspace/diogo/sandbox/fastchat/chatserver/src/quickchat'

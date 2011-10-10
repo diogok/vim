@@ -10,6 +10,7 @@ set incsearch
 let g:slimv_lisp = '"lein repl"'
 
 au BufNewFile,BufRead *.clj set ft=clojure
+au BufNewFile,BufRead *.cljs set ft=clojure
 au BufNewFile,BufRead *.module set ft=php
 au BufNewFile,BufRead *.install set ft=php
 
@@ -52,8 +53,8 @@ noremap H F$
 
 set backspace=indent,eol,start 
 
-let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
-let g:clj_paren_rainbow=1           " Rainbow parentheses'!
+let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
+let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>

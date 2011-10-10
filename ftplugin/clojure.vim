@@ -7,8 +7,6 @@ if exists("b:did_ftplugin")
 	finish
 endif
 
-map <C-F6> :!lein test<CR>
-
 let b:did_ftplugin = 1
 
 let s:cpo_save = &cpo
@@ -16,7 +14,7 @@ set cpo&vim
 
 let b:undo_ftplugin = "setlocal fo< com< cms< cpt< isk< def<"
 
-setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.
+setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
 
 setlocal define=^\\s*(def\\(-\\|n\\|n-\\|macro\\|struct\\|multi\\)?
 
@@ -51,7 +49,12 @@ if has("gui_win32") && !exists("b:browsefilter")
 				\ "All Files (*.*)\t*.*\n"
 endif
 
-for ns in ['clojure.core', 'clojure.set', 'clojure.xml', 'clojure.zip']
+for ns in [ "clojure.core", "clojure.inspector", "clojure.java.browse",
+			\ "clojure.java.io", "clojure.java.javadoc", "clojure.java.shell",
+			\ "clojure.main", "clojure.pprint", "clojure.repl", "clojure.set",
+			\ "clojure.stacktrace", "clojure.string", "clojure.template",
+			\ "clojure.test", "clojure.test.tap", "clojure.test.junit",
+			\ "clojure.walk", "clojure.xml", "clojure.zip" ]
 	call vimclojure#AddCompletions(ns)
 endfor
 
@@ -62,11 +65,11 @@ function! ClojureGetFoldingLevel(lineno)
 	function closure.f() dict
 		execute self.lineno
 
-		if vimclojure#SynIdName() =~ 'clojureParen\d' && vimclojure#Yank('l', 'normal! "lyl') == '('
+		if vimclojure#util#SynIdName() =~ 'clojureParen\d' && vimclojure#util#Yank('l', 'normal! "lyl') == '('
 			return 1
 		endif
 
-		if searchpairpos('(', '', ')', 'bWr', 'vimclojure#SynIdName() !~ "clojureParen\\d"') != [0, 0]
+		if searchpairpos('(', '', ')', 'bWr', 'vimclojure#util#SynIdName() !~ "clojureParen\\d"') != [0, 0]
 			return 1
 		endif
 
@@ -82,78 +85,59 @@ if exists("g:clj_want_folding") && g:clj_want_folding == 1 && 0 == 1
 	setlocal foldmethod=expr
 endif
 
-call vimclojure#InitBuffer()
+try
+	call vimclojure#InitBuffer()
+catch /.*/
+	" We swallow a failure here. It means most likely that the
+	" server is not running.
+	echohl WarningMsg
+	echomsg v:exception
+	echohl None
+endtry
+
+call vimclojure#MapPlug("n", "aw", "AddToLispWords")
+call vimclojure#MapPlug("n", "tr", "ToggleParenRainbow")
+
+call vimclojure#MapPlug("n", "lw", "DocLookupWord")
+call vimclojure#MapPlug("n", "li", "DocLookupInteractive")
+call vimclojure#MapPlug("n", "jw", "JavadocLookupWord")
+call vimclojure#MapPlug("n", "ji", "JavadocLookupInteractive")
+call vimclojure#MapPlug("n", "fd", "FindDoc")
+
+call vimclojure#MapPlug("n", "mw", "MetaLookupWord")
+call vimclojure#MapPlug("n", "mi", "MetaLookupInteractive")
+
+call vimclojure#MapPlug("n", "sw", "SourceLookupWord")
+call vimclojure#MapPlug("n", "si", "SourceLookupInteractive")
+
+call vimclojure#MapPlug("n", "gw", "GotoSourceWord")
+call vimclojure#MapPlug("n", "gi", "GotoSourceInteractive")
+
+call vimclojure#MapPlug("n", "rf", "RequireFile")
+call vimclojure#MapPlug("n", "rF", "RequireFileAll")
+
+call vimclojure#MapPlug("n", "rt", "RunTests")
+
+call vimclojure#MapPlug("n", "me", "MacroExpand")
+call vimclojure#MapPlug("n", "m1", "MacroExpand1")
+
+call vimclojure#MapPlug("n", "ef", "EvalFile")
+call vimclojure#MapPlug("n", "el", "EvalLine")
+call vimclojure#MapPlug("v", "eb", "EvalBlock")
+call vimclojure#MapPlug("n", "et", "EvalToplevel")
+call vimclojure#MapPlug("n", "ep", "EvalParagraph")
+
+call vimclojure#MapPlug("n", "sr", "StartRepl")
+call vimclojure#MapPlug("n", "sR", "StartLocalRepl")
 
 if exists("b:vimclojure_namespace")
-	call vimclojure#MakePlug("n", "DocLookupWord", 'vimclojure#DocLookup(expand("<cword>"))')
-	call vimclojure#MakePlug("n", "DocLookupInteractive", 'vimclojure#DocLookup(input("Symbol to look up: "))')
-	call vimclojure#MakePlug("n", "JavadocLookupWord", 'vimclojure#JavadocLookup(expand("<cword>"))')
-	call vimclojure#MakePlug("n", "JavadocLookupInteractive", 'vimclojure#JavadocLookup(input("Class to lookup: "))')
-	call vimclojure#MakePlug("n", "FindDoc", 'vimclojure#FindDoc())')
-
-	call vimclojure#MapPlug("n", "lw", "DocLookupWord")
-	call vimclojure#MapPlug("n", "li", "DocLookupInteractive")
-	call vimclojure#MapPlug("n", "jw", "JavadocLookupWord")
-	call vimclojure#MapPlug("n", "ji", "JavadocLookupInteractive")
-	call vimclojure#MapPlug("n", "fd", "FindDoc")
-
-	call vimclojure#MakePlug("n", "MetaLookupWord", 'vimclojure#MetaLookup(expand("<cword>"))')
-	call vimclojure#MakePlug("n", "MetaLookupInteractive", 'vimclojure#MetaLookup(input("Symbol to look up: "))')
-
-	call vimclojure#MapPlug("n", "mw", "MetaLookupWord")
-	call vimclojure#MapPlug("n", "mi", "MetaLookupInteractive")
-
-	call vimclojure#MakePlug("n", "SourceLookupWord", 'vimclojure#SourceLookup(expand("<cword>"))')
-	call vimclojure#MakePlug("n", "SourceLookupInteractive", 'vimclojure#SourceLookup(input("Symbol to look up: "))')
-
-	call vimclojure#MapPlug("n", "sw", "SourceLookupWord")
-	call vimclojure#MapPlug("n", "si", "SourceLookupInteractive")
-
-	call vimclojure#MakePlug("n", "GotoSourceWord", 'vimclojure#GotoSource(expand("<cword>"))')
-	call vimclojure#MakePlug("n", "GotoSourceInteractive", 'vimclojure#GotoSource(input("Symbol to go to: "))')
-
-	call vimclojure#MapPlug("n", "gw", "GotoSourceWord")
-	call vimclojure#MapPlug("n", "gi", "GotoSourceInteractive")
-
-	call vimclojure#MakePlug("n", "RequireFile", 'vimclojure#RequireFile(0)')
-	call vimclojure#MakePlug("n", "RequireFileAll", 'vimclojure#RequireFile(1)')
-
-	call vimclojure#MapPlug("n", "rf", "RequireFile")
-	call vimclojure#MapPlug("n", "rF", "RequireFileAll")
-
-	call vimclojure#MakePlug("n", "MacroExpand",  'vimclojure#MacroExpand(0)')
-	call vimclojure#MakePlug("n", "MacroExpand1", 'vimclojure#MacroExpand(1)')
-
-	call vimclojure#MapPlug("n", "me", "MacroExpand")
-	call vimclojure#MapPlug("n", "m1", "MacroExpand1")
-
-	call vimclojure#MakePlug("n", "EvalFile",      'vimclojure#EvalFile()')
-	call vimclojure#MakePlug("n", "EvalLine",      'vimclojure#EvalLine()')
-	call vimclojure#MakePlug("v", "EvalBlock",     'vimclojure#EvalBlock()')
-	call vimclojure#MakePlug("n", "EvalToplevel",  'vimclojure#EvalToplevel()')
-	call vimclojure#MakePlug("n", "EvalParagraph", 'vimclojure#EvalParagraph()')
-
-	call vimclojure#MapPlug("n", "ef", "EvalFile")
-	call vimclojure#MapPlug("n", "el", "EvalLine")
-	call vimclojure#MapPlug("v", "eb", "EvalBlock")
-	call vimclojure#MapPlug("n", "et", "EvalToplevel")
-	call vimclojure#MapPlug("n", "ep", "EvalParagraph")
-
-	call vimclojure#MakePlug("n", "StartRepl", 'vimclojure#Repl.New()')
-	call vimclojure#MapPlug("n", "sr", "StartRepl")
-
-	inoremap <Plug>ClojureReplEnterHook <Esc>:call b:vimclojure_repl.enterHook()<CR>
-	inoremap <Plug>ClojureReplUpHistory <C-O>:call b:vimclojure_repl.upHistory()<CR>
-	inoremap <Plug>ClojureReplDownHistory <C-O>:call b:vimclojure_repl.downHistory()<CR>
-
-	nnoremap <Plug>ClojureClosePreview :pclose!<CR>
-	call vimclojure#MapPlug("n", "p", "ClosePreview")
-
 	setlocal omnifunc=vimclojure#OmniCompletion
 
 	augroup VimClojure
 		autocmd CursorMovedI <buffer> if pumvisible() == 0 | pclose | endif
 	augroup END
 endif
+
+call vimclojure#MapPlug("n", "p", "CloseResultBuffer")
 
 let &cpo = s:cpo_save
