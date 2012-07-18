@@ -9,6 +9,7 @@ set incsearch
 
 let g:slimv_lisp = '"lein repl"'
 
+au BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.clj set ft=clojure
 au BufNewFile,BufRead *.cljs set ft=clojure
 au BufNewFile,BufRead *.module set ft=php
