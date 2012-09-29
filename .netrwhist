@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/diogo/workspace/kioos/js-sdk/api/.settings'
-let g:netrw_dirhist_2='/home/diogo/Downloads/sli/slidemenu/images'
-let g:netrw_dirhist_3='/home/diogo/workspace/libs/restcouch'
-let g:netrw_dirhist_4='/home/diogo/workspace/kioos/js-sdk/target/classes'
-let g:netrw_dirhist_5='/home/diogo/workspace/flora/openflora/opendata/bot/libs'
-let g:netrw_dirhist_6='/home/diogo/workspace/libs/simple-cypher'
-let g:netrw_dirhist_7='/home/diogo/workspace/libs/tiles/tiles'
-let g:netrw_dirhist_8='/home/diogo/workspace/quest/src/quest/client'
-let g:netrw_dirhist_9='/home/diogo/workspace/quest/src/quest/server'
+let g:netrw_dirhist_cnt =0
