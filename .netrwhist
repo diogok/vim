@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/diogo/workspace/diogo/sandbox/trends/couch/statuses/views/statuses'
-let g:netrw_dirhist_2='/home/diogo/workspace/diogo/sandbox/trends/couch/catalog'
-let g:netrw_dirhist_3='/home/diogo/workspace/cncflora/openflora/taxamatch/examples'
-let g:netrw_dirhist_4='/home/diogo/workspace/cncflora/openflora/dwcserver/resources/public'
-let g:netrw_dirhist_5='/home/diogo/workspace/diogo/lecafe/tools'
-let g:netrw_dirhist_6='/home/diogo/workspace/diogo/lecafe/src/api'
