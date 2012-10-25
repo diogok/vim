@@ -7,7 +7,8 @@ set showmode
 set ttyfast
 set incsearch
 
-let g:slimv_lisp = '"lein repl"'
+let g:slimv_swank_cmd = '!xterm -e lein swank &'
+let g:slimv_swank_clojure = '!xterm -e lein swank &'
 
 au BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.clj set ft=clojure
