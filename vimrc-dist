@@ -7,9 +7,6 @@ set showmode
 set ttyfast
 set incsearch
 
-let g:slimv_swank_cmd = '!xterm -e lein swank &'
-let g:slimv_swank_clojure = '!xterm -e lein swank &'
-
 au BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.clj set ft=clojure
 au BufNewFile,BufRead *.cljs set ft=clojure
@@ -54,9 +51,6 @@ noremap L f$
 noremap H F$
 
 set backspace=indent,eol,start 
-
-let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
-let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
