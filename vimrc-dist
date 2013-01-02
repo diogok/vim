@@ -56,14 +56,18 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-map <F2> :!couchapp push<CR>
-
 imap ( ()<esc>i " autocompleta parenteses, chaves, colchetes, aspas
 inoremap ( ()<esc>i
 inoremap { {}<esc>i
 inoremap [ []<esc>i
 inoremap " ""<esc>i
 inoremap ' ''<esc>i
+
+" parentesis?
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " abas
 map <C-T> :tabe .<CR>
