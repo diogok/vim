@@ -45,7 +45,6 @@ set ai cindent sw=4     " configura a identacao
 set is ic               " configura a busca
 set et st=4 ts=4        " configura o TAB
 retab                   " substitui os TAB's por espacos
-syntax on               " habilita a colocaracao de sintaxe
 map <C-B> :!php -l %<CR>
 imap <Nul> <C-X><C-O>
 imap <C-Nul> <C-X><C-O>
@@ -64,12 +63,6 @@ inoremap { {}<esc>i
 inoremap [ []<esc>i
 inoremap " ""<esc>i
 inoremap ' ''<esc>i
-
-" parentesis?
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
 " abas
 map <C-T> :tabe .<CR>
