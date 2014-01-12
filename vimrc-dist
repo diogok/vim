@@ -15,6 +15,7 @@ au BufNewFile,BufRead *.install set ft=php
 au BufNewFile,BufRead *.mustache set ft=html
 au BufNewFile,BufRead *.groovy  set ft=groovy 
 au BufNewFile,BufRead *.gradle set ft=groovy 
+au BufNewFile,BufRead *.md set ft=markdown
 
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
