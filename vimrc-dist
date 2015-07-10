@@ -13,8 +13,6 @@ au BufNewFile,BufRead *.cljs set ft=clojure
 au BufNewFile,BufRead *.module set ft=php
 au BufNewFile,BufRead *.install set ft=php
 au BufNewFile,BufRead *.mustache set ft=html
-au BufNewFile,BufRead *.groovy  set ft=groovy 
-au BufNewFile,BufRead *.gradle set ft=groovy 
 au BufNewFile,BufRead *.md set ft=markdown
 
 autocmd FileType php let php_sql_query=1
@@ -45,11 +43,11 @@ set fdm=marker          " habilita o folding
 
 set bs=2                " mexe com o backspace mas nao lembro o que faz
 set sm                  " colore chaves/parenteses casados
-set ai cindent sw=4     " configura a identacao
+set ai cindent sw=2     " configura a identacao
 set is ic               " configura a busca
-set et st=4 ts=4        " configura o TAB
+set et st=2 ts=2        " configura o TAB
 retab                   " substitui os TAB's por espacos
-map <C-B> :!php -l %<CR>
+
 imap <Nul> <C-X><C-O>
 imap <C-Nul> <C-X><C-O>
 noremap L f$ 
@@ -84,14 +82,8 @@ map <A-right> <C-w>l
 map <A-down> <C-w>j
 map <A-up> <C-w>k
 
-" atalho para embaralhar letras quando alguem estiver olhando
-map <F8> ggVGg?
-
-" atalho para retirar ^M do final das linhas
-map <> :%s///g<CR>
-
 " aliases uteis para fechar o vim
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
 
-map tt :CommandT<CR>
 au FocusLost * :wa
+
