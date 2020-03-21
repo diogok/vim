@@ -1,8 +1,20 @@
 execute pathogen#infect()
 
 set nu
-set relativenumber
+"set relativenumber
 
 syntax on
 
 filetype plugin indent on
+
+map <C-T> :tabe .<CR>
+map <C-left> :tabp<CR>
+map <C-right> :tabn<CR>
+map <C-h> :tabp<CR>
+map <C-l> :tabn<CR>
+
+map <C-W><C-V> :vnew .<CR><C-W>R
+map <A-left> <C-w>h
+map <A-right> <C-w>l
+map <A-down> <C-w>j
+map <A-up> <C-w>k
