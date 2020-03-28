@@ -18,3 +18,13 @@ map <A-left> <C-w>h
 map <A-right> <C-w>l
 map <A-down> <C-w>j
 map <A-up> <C-w>k
+
+
+imap ( ()<esc>i
+inoremap ( ()<esc>i
+inoremap { {}<esc>i
+inoremap [ []<esc>i
+inoremap " ""<esc>i
+inoremap ' ''<esc>i
+
+cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
