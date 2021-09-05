@@ -2,6 +2,7 @@ execute pathogen#infect()
 
 set nu
 "set relativenumber
+"set noswapfile  " disable swap file
 
 syntax on
 
@@ -28,3 +29,11 @@ inoremap " ""<esc>i
 inoremap ' ''<esc>i
 
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
+
+set tabstop=2
+set expandtab
+set sm
+set ai cindent sw=2
+retab
+
+set backupcopy=yes
