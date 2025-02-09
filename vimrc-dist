@@ -1,25 +1,25 @@
-execute pathogen#infect()
-
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
 set nu
-"set relativenumber
-"set noswapfile  " disable swap file
 
-syntax on
+packadd! fzf
+packadd! fzf.vim
+packloadall
 
-filetype plugin indent on
+set rtp+=/usr/bin/fzf
+nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-g> :Rg<Cr>
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 map <C-T> :tabe .<CR>
 map <C-left> :tabp<CR>
 map <C-right> :tabn<CR>
 map <C-h> :tabp<CR>
 map <C-l> :tabn<CR>
-
-map <C-W><C-V> :vnew .<CR><C-W>R
-map <A-left> <C-w>h
-map <A-right> <C-w>l
-map <A-down> <C-w>j
-map <A-up> <C-w>k
-
 
 imap ( ()<esc>i
 inoremap ( ()<esc>i
@@ -28,12 +28,8 @@ inoremap [ []<esc>i
 inoremap " ""<esc>i
 inoremap ' ''<esc>i
 
-cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq| cab X x| cab Wqw wq| cab wqw wq
 
-set tabstop=2
 set expandtab
-set sm
-set ai cindent sw=2
 retab
 
-set backupcopy=yes
+
